@@ -1,12 +1,12 @@
 import 'package:crazycar/core/utils/colors/app_colors.dart';
 import 'package:crazycar/core/utils/themes/app_theme.dart';
 import 'package:crazycar/features/layout/presentation/ui/app_layout.dart';
-import 'package:crazycar/features/login/presentation/ui/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+void main() async{
+   await ScreenUtil.ensureScreenSize();
    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: AppColors.kWhiteColor,
       statusBarIconBrightness: Brightness.dark,
@@ -34,6 +34,6 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child:const  LoginScreen() ,) ;
+      child:const  AppLayout() ,) ;
   }
 }

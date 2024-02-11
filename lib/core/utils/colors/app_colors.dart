@@ -12,12 +12,11 @@ class AppColors {
   static const kGrey6Color = Color(0xffF2F2F2);
   static const kGreyIconlistColor = Color(0xff5D5C5C);
   static const kblue1Color = Color(0xff2F80ED);
-  static const kblackGreyColor = Color(0xff333333);
-  static const kpaletteColor = Color(0xff272728);
 
+  static const kblackGreyColor = Color(0xff333333);
   static const kGreyColor = Color(0xffC8C8C8);
   static const kBlackColor = Color(0xff000000);
   static const kWhiteColor = Color(0xffFFFFFF);
   static const kRedColor = Color(0xffFF0000);
-  static const kLightRedColor = Color(0xffEB5757);
+
 }

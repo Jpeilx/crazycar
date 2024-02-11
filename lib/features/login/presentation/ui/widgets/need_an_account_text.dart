@@ -14,11 +14,11 @@ class NeedAnAccountText extends StatelessWidget {
       text: TextSpan(
         children: [
           TextSpan(
-            text: 'Already have an account?',
+            text: 'Need to buy our car ?',
             style: getRegularStyle(fontSize: FontSize.s13, color: AppColors.kDarkPrimaryColor, fontFamily: ''),
           ),
           TextSpan(
-            text: ' Sign Up',
+            text: ' Buy now',
             style:getSemiBoldStyle(fontSize: FontSize.s13 , color: AppColors.kPrimaryColor, fontFamily: ''),
           ),
         ],
