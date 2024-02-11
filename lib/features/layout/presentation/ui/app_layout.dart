@@ -21,56 +21,71 @@ class AppLayout extends StatelessWidget {
           return Scaffold(
             body: layoutCubit
                 .supermarketScreens[layoutCubit.currentButtomNavIndex],
-            bottomNavigationBar: BottomNavigationBar(
-              elevation: 0,
-              backgroundColor: AppColors.kWhiteColor,
-              selectedItemColor: AppColors.kBlackColor,
-             
-              showUnselectedLabels: true,
-              unselectedItemColor: AppColors.kGreyColor,
-              items: <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: SVGAsset(
-                      boxFit: BoxFit.fill,
-                      svgPath: AssetsData.scanIcon,
-                      svgWidth: 24.w,
-                      svgheight: 24.h,
-                      svgColor: layoutCubit.currentButtomNavIndex == 0
-                          ? AppColors.kBlackColor
-                          : AppColors.kGreyColor),
-                  label: ''
-                 
-                ),
-                BottomNavigationBarItem(
-                  icon: SVGAsset(
-                      boxFit: BoxFit.fill,
-                      svgPath: AssetsData.pauseIcon,
-                      svgWidth: 24.w,
-                      svgheight: 24.h,
-                      svgColor: layoutCubit.currentButtomNavIndex == 1
-                          ? AppColors.kBlackColor
-                          : AppColors.kGreyColor),
-                  label: ''
+            bottomNavigationBar: Container(
+               decoration:const  BoxDecoration(
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: AppColors.kGrey6Color,
+              blurRadius: 12,
+            ),
+          ],),
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(25.r),topRight: Radius.circular(25.r)),
+                child: BottomNavigationBar(
+                  elevation: 0,
                   
+                  backgroundColor: AppColors.kWhiteColor,
+                  selectedItemColor: AppColors.kBlackColor,
+                 
+                  showUnselectedLabels: false 
+                  ,
+                  showSelectedLabels: false ,
+                  unselectedItemColor: AppColors.kGreyColor,
+                  items: <BottomNavigationBarItem>[
+                    BottomNavigationBarItem(
+                      icon: SVGAsset(
+                          boxFit: BoxFit.fill,
+                          svgPath: AssetsData.scanIcon,
+                          svgWidth: 24.w,
+                          svgheight: 24.h,
+                          svgColor: layoutCubit.currentButtomNavIndex == 0
+                              ? AppColors.kBlackColor
+                              : AppColors.kGreyColor),
+                      label: ''
+                     
+                    ),
+                    BottomNavigationBarItem(
+                      icon: SVGAsset(
+                          boxFit: BoxFit.fill,
+                          svgPath: AssetsData.pauseIcon,
+                          svgWidth: 24.w,
+                          svgheight: 24.h,
+                          svgColor: layoutCubit.currentButtomNavIndex == 1
+                              ? AppColors.kBlackColor
+                              : AppColors.kGreyColor),
+                      label: ''
+                      
+                    ),
+                    BottomNavigationBarItem(
+                      icon: SVGAsset(
+                          boxFit: BoxFit.fill,
+                          svgPath: AssetsData.videoIcon,
+                          svgWidth: 24.w,
+                          svgheight: 24.h,
+                          svgColor: layoutCubit.currentButtomNavIndex == 2
+                              ? AppColors.kblackGreyColor
+                              : AppColors.kGreyColor),
+                     label: ''
+                    
+                    ),
+                   
+                  ],
+                  currentIndex: layoutCubit.currentButtomNavIndex,
+                  onTap: (index) {
+                    layoutCubit.changeButtonNavItem(index);
+                  },
                 ),
-                BottomNavigationBarItem(
-                  icon: SVGAsset(
-                      boxFit: BoxFit.fill,
-                      svgPath: AssetsData.videoIcon,
-                      svgWidth: 24.w,
-                      svgheight: 24.h,
-                      svgColor: layoutCubit.currentButtomNavIndex == 2
-                          ? AppColors.kblackGreyColor
-                          : AppColors.kGreyColor),
-                 label: ''
-                
-                ),
-               
-              ],
-              currentIndex: layoutCubit.currentButtomNavIndex,
-              onTap: (index) {
-                layoutCubit.changeButtonNavItem(index);
-              },
+              ),
             ),
           );
         },
