@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class SVGAsset extends StatelessWidget {
+class SVGAssetHandler extends StatelessWidget {
   final String svgPath;
   final double svgWidth;
   final double svgheight;
   final Color? svgColor;
   final BoxFit boxFit;
 
-  const SVGAsset(
+  const SVGAssetHandler(
       {super.key,
       required this.svgPath,
       required this.svgWidth,

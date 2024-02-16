@@ -33,7 +33,6 @@ class AppLayout extends StatelessWidget {
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(25.r),topRight: Radius.circular(25.r)),
                 child: BottomNavigationBar(
                   elevation: 0,
-                  
                   backgroundColor: AppColors.kWhiteColor,
                   selectedItemColor: AppColors.kBlackColor,
                  
@@ -43,7 +42,7 @@ class AppLayout extends StatelessWidget {
                   unselectedItemColor: AppColors.kGreyColor,
                   items: <BottomNavigationBarItem>[
                     BottomNavigationBarItem(
-                      icon: SVGAsset(
+                      icon: SVGAssetHandler(
                           boxFit: BoxFit.fill,
                           svgPath: AssetsData.scanIcon,
                           svgWidth: 24.w,
@@ -55,7 +54,7 @@ class AppLayout extends StatelessWidget {
                      
                     ),
                     BottomNavigationBarItem(
-                      icon: SVGAsset(
+                      icon: SVGAssetHandler(
                           boxFit: BoxFit.fill,
                           svgPath: AssetsData.pauseIcon,
                           svgWidth: 24.w,
@@ -67,7 +66,7 @@ class AppLayout extends StatelessWidget {
                       
                     ),
                     BottomNavigationBarItem(
-                      icon: SVGAsset(
+                      icon: SVGAssetHandler(
                           boxFit: BoxFit.fill,
                           svgPath: AssetsData.videoIcon,
                           svgWidth: 24.w,

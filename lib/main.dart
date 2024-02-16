@@ -1,6 +1,6 @@
 import 'package:crazycar/core/utils/colors/app_colors.dart';
+import 'package:crazycar/core/utils/router/app_router.dart';
 import 'package:crazycar/core/utils/themes/app_theme.dart';
-import 'package:crazycar/features/layout/presentation/ui/app_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,13 +27,13 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         // Use builder only if you need to use library outside ScreenUtilInit context
         builder: (_, child) {
-             return MaterialApp(
-          debugShowCheckedModeBanner: false,
-         
-          theme: getApplicationTheme() ,
-          home: child,
-        );
-      },
-      child:const  AppLayout() ,) ;
+             return MaterialApp.router(
+                routerConfig: AppRouter.router,
+                debugShowCheckedModeBanner: false,
+                theme: getApplicationTheme(),
+                
+              );
+      });
+     
   }
 }

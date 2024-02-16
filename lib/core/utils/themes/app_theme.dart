@@ -101,11 +101,13 @@ ThemeData getApplicationTheme() {
           errorBorder: OutlineInputBorder(
               borderSide: BorderSide(color: AppColors.kRedColor, width: 2.w),
               borderRadius: BorderRadius.all(Radius.circular(5.r))),
+          
           // focused border style
           focusedErrorBorder: OutlineInputBorder(
               borderSide: BorderSide(
                   color: AppColors.kGreyInputborderColor, width: 2.w),
-              borderRadius: BorderRadius.all(Radius.circular(5.r)))),
+              borderRadius: BorderRadius.all(Radius.circular(5.r))))
+          ,
       // label style
       bottomSheetTheme:
           BottomSheetThemeData(backgroundColor: AppColors.kWhiteColor));
