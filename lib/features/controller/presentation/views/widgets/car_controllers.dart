@@ -9,7 +9,7 @@ class CarControllers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-          height: 240,
+          height: 240.h,
           width: double.infinity,
           child: Stack(
             alignment: Alignment.center,
@@ -90,8 +90,8 @@ class CarControllers extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 120,
-                bottom: 150,
+                left: 112.w,
+                bottom: 155.h,
                 child: Stack(
                   children: [
                     InkWell(
@@ -104,8 +104,8 @@ class CarControllers extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                          left: 50 ,
-                          bottom: 37,
+                          left: 50.w,
+                          bottom: 37.h,
                           child: Container(
                             width: 7.w,
                             height: 7.h,
@@ -118,8 +118,8 @@ class CarControllers extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 120,
-                bottom: 35,
+                left: 112.w,
+                bottom: 28.h,
                 child: Stack(
                   children: [
                     InkWell(
@@ -133,8 +133,8 @@ class CarControllers extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                          left: 50 ,
-                          bottom: 10,
+                          left: 50.w ,
+                          bottom: 10.h,
                           child: Container(
                             width: 7.w,
                             height: 7.h,

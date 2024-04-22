@@ -5,8 +5,8 @@ import 'package:crazycar/core/utils/styles/font_manager.dart';
 import 'package:crazycar/core/utils/styles/text_style_manger.dart';
 import 'package:crazycar/core/widgets/app_text_button.dart';
 import 'package:crazycar/core/widgets/app_text_fom_field.dart';
-import 'package:crazycar/features/login/presentation/ui/widgets/need_an_account_text.dart';
-import 'package:crazycar/features/login/presentation/ui/widgets/terms_and_conditions_text.dart';
+import 'package:crazycar/features/login/presentation/views/widgets/need_an_account_text.dart';
+import 'package:crazycar/features/login/presentation/views/widgets/terms_and_conditions_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -97,17 +97,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ? Icons.visibility_off
                                   : Icons.visibility,
                             ),
-                          ),
-                        ),
-                        verticalSpace(24),
-                        Align(
-                          alignment: AlignmentDirectional.centerEnd,
-                          child: Text(
-                            'Forgot Password?',
-                            style: getRegularStyle(
-                                fontSize: FontSize.s13,
-                                color: AppColors.kPrimaryColor,
-                                fontFamily: ''),
                           ),
                         ),
                         verticalSpace(40),

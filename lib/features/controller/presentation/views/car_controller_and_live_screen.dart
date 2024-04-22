@@ -25,7 +25,7 @@ class CarControllerAndLiveScreen extends StatelessWidget {
               fit: BoxFit.fill,
               height: 300.h,
             ),
-            verticalSpace(80),
+            verticalSpace(70),
             CarControllers(),
           ],
         ),
