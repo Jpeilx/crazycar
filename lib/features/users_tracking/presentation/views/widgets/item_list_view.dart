@@ -2,8 +2,8 @@
 import 'dart:io';
 
 import 'package:crazycar/core/widgets/app_container_shape.dart';
-import 'package:crazycar/features/users_traking/data/models/image_downloader_model/Image_downloader_model.dart';
-import 'package:crazycar/features/users_traking/presentation/logic/edit_upload_images_cubit/edit_upload_images_cubit.dart';
+import 'package:crazycar/features/users_tracking/data/models/image_downloader_model/Image_downloader_model.dart';
+import 'package:crazycar/features/users_tracking/presentation/logic/edit_upload_images_cubit/edit_upload_images_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

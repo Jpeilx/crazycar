@@ -2,11 +2,11 @@
 import 'package:crazycar/core/utils/colors/app_colors.dart';
 import 'package:crazycar/core/utils/styles/font_manager.dart';
 import 'package:crazycar/core/utils/styles/text_style_manger.dart';
-import 'package:crazycar/features/users_traking/data/models/image_downloader_model/Image_downloader_model.dart';
-import 'package:crazycar/features/users_traking/presentation/logic/edit_upload_images_cubit/edit_upload_images_cubit.dart';
-import 'package:crazycar/features/users_traking/presentation/views/widgets/item_add_image_widget.dart';
-import 'package:crazycar/features/users_traking/presentation/views/widgets/item_list_view.dart';
-import 'package:crazycar/features/users_traking/presentation/views/widgets/item_pager_widget.dart';
+import 'package:crazycar/features/users_tracking/data/models/image_downloader_model/Image_downloader_model.dart';
+import 'package:crazycar/features/users_tracking/presentation/logic/edit_upload_images_cubit/edit_upload_images_cubit.dart';
+import 'package:crazycar/features/users_tracking/presentation/views/widgets/item_add_image_widget.dart';
+import 'package:crazycar/features/users_tracking/presentation/views/widgets/item_list_view.dart';
+import 'package:crazycar/features/users_tracking/presentation/views/widgets/item_pager_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

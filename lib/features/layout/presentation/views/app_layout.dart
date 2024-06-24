@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class AppLayout extends StatelessWidget {
   const AppLayout({super.key});
 
@@ -22,62 +21,55 @@ class AppLayout extends StatelessWidget {
             body: layoutCubit
                 .supermarketScreens[layoutCubit.currentButtomNavIndex],
             bottomNavigationBar: Container(
-               decoration:const  BoxDecoration(
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-              color: AppColors.kGrey6Color,
-              blurRadius: 12,
-            ),
-          ],),
+              decoration: const BoxDecoration(
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                    color: AppColors.kGrey6Color,
+                    blurRadius: 12,
+                  ),
+                ],
+              ),
               child: ClipRRect(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(25.r),topRight: Radius.circular(25.r)),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(25.r),
+                    topRight: Radius.circular(25.r)),
                 child: BottomNavigationBar(
                   elevation: 0,
                   backgroundColor: AppColors.kWhiteColor,
                   selectedItemColor: AppColors.kBlackColor,
-                 
-                  showUnselectedLabels: false 
-                  ,
-                  showSelectedLabels: false ,
+                  showUnselectedLabels: false,
+                  showSelectedLabels: false,
                   unselectedItemColor: AppColors.kGreyColor,
                   items: <BottomNavigationBarItem>[
                     BottomNavigationBarItem(
-                      icon: SVGAssetHandler(
-                          boxFit: BoxFit.fill,
-                          svgPath: AssetsData.scanIcon,
-                          svgWidth: 24.w,
-                          svgheight: 24.h,
-                          svgColor: layoutCubit.currentButtomNavIndex == 0
-                              ? AppColors.kBlackColor
-                              : AppColors.kGreyColor),
-                      label: ''
-                     
-                    ),
+                        icon: SVGAssetHandler(
+                            boxFit: BoxFit.fill,
+                            svgPath: AssetsData.scanIcon,
+                            svgWidth: 24.w,
+                            svgheight: 24.h,
+                            svgColor: layoutCubit.currentButtomNavIndex == 0
+                                ? AppColors.kBlackColor
+                                : AppColors.kGreyColor),
+                        label: ''),
                     BottomNavigationBarItem(
-                      icon: SVGAssetHandler(
-                          boxFit: BoxFit.fill,
-                          svgPath: AssetsData.pauseIcon,
-                          svgWidth: 24.w,
-                          svgheight: 24.h,
-                          svgColor: layoutCubit.currentButtomNavIndex == 1
-                              ? AppColors.kBlackColor
-                              : AppColors.kGreyColor),
-                      label: ''
-                      
-                    ),
+                        icon: SVGAssetHandler(
+                            boxFit: BoxFit.fill,
+                            svgPath: AssetsData.videoIcon,
+                            svgWidth: 24.w,
+                            svgheight: 24.h,
+                            svgColor: layoutCubit.currentButtomNavIndex == 1
+                                ? AppColors.kBlackColor
+                                : AppColors.kGreyColor),
+                        label: ''),
                     BottomNavigationBarItem(
-                      icon: SVGAssetHandler(
-                          boxFit: BoxFit.fill,
-                          svgPath: AssetsData.videoIcon,
-                          svgWidth: 24.w,
-                          svgheight: 24.h,
-                          svgColor: layoutCubit.currentButtomNavIndex == 2
+                        icon: Icon(
+                          Icons.spatial_tracking,
+                          color: layoutCubit.currentButtomNavIndex == 2
                               ? AppColors.kblackGreyColor
-                              : AppColors.kGreyColor),
-                     label: ''
-                    
-                    ),
-                   
+                              : AppColors.kGreyColor,
+                          size: 28,
+                        ),
+                        label: ''),
                   ],
                   currentIndex: layoutCubit.currentButtomNavIndex,
                   onTap: (index) {

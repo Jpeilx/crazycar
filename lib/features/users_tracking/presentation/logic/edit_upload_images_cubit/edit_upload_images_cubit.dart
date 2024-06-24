@@ -1,4 +1,4 @@
-import 'package:crazycar/features/users_traking/data/models/image_downloader_model/Image_downloader_model.dart';
+import 'package:crazycar/features/users_tracking/data/models/image_downloader_model/Image_downloader_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

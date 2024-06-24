@@ -2,7 +2,8 @@ import 'package:crazycar/core/utils/colors/app_colors.dart';
 import 'package:crazycar/core/utils/helper/spacing.dart';
 import 'package:crazycar/core/utils/styles/font_manager.dart';
 import 'package:crazycar/core/utils/styles/text_style_manger.dart';
-import 'package:crazycar/features/qr_code/presentatin/ui/widgets/qr_reader_view.dart';
+import 'package:crazycar/core/widgets/app_text_button.dart';
+import 'package:crazycar/features/qr_code/presentatin/logic/car_option_cubit/car_options_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,14 +20,44 @@ class QRView extends StatelessWidget {
           SizedBox(
             height: 100.h,
           ),
-          SizedBox(
-              width: 389.w,
-              height: 512.h,
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: QrReaderView())),
-          verticalSpace(80) ,
-          Text('Scan Your Code' , style: getBoldStyle(fontSize: FontSize.s32 , color: AppColors.kBlackColor, fontFamily: FontConstants.poppinsFontfamily),)
+
+          AppTextButton(
+              buttonText: 'mobile Control',
+              textStyle: getMediumStyle(
+                  fontSize: FontSize.s14,
+                  color: AppColors.kBlackColor,
+                  fontFamily: FontConstants.poppinsFontfamily),
+              onPressed: () {
+                CarOptionsCubit.get(context).changeCarControllerOption('m') ;
+              }),
+          verticalSpace(20),
+          AppTextButton(
+              buttonText: 'Gloves Control',
+              textStyle: getMediumStyle(
+                  fontSize: FontSize.s14,
+                  color: AppColors.kBlackColor,
+                  fontFamily: FontConstants.poppinsFontfamily),
+              onPressed: () {
+                 CarOptionsCubit.get(context).changeCarControllerOption('g') ;
+              }),
+          verticalSpace(20),
+          AppTextButton(
+              buttonText: 'Self Driving',
+              textStyle: getMediumStyle(
+                  fontSize: FontSize.s14,
+                  color: AppColors.kBlackColor,
+                  fontFamily: FontConstants.poppinsFontfamily),
+              onPressed: () {
+                 CarOptionsCubit.get(context).changeCarControllerOption('a') ;
+              }),
+          // SizedBox(
+          //     width: 389.w,
+          //     height: 512.h,
+          //     child: ClipRRect(
+          //         borderRadius: BorderRadius.circular(15),
+          //         child: QrReaderView())),
+          // verticalSpace(80) ,
+          // Text('Scan Your Code' , style: getBoldStyle(fontSize: FontSize.s32 , color: AppColors.kBlackColor, fontFamily: FontConstants.poppinsFontfamily),)
         ],
       ),
     ));

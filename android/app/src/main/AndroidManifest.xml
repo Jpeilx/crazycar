@@ -6,6 +6,7 @@
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
+            android:resizeableActivity="true"
             android:name=".MainActivity"
             android:exported="true"
             
@@ -27,6 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <activity
@@ -36,5 +38,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <meta-data
+            android:name="android.allow_multiple_resumed_activities"
+            android:value="true" />
     </application>
 </manifest>
