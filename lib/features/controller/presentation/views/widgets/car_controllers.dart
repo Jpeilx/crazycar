@@ -1,6 +1,5 @@
 import 'package:crazycar/core/constant/app_assets.dart';
 import 'package:crazycar/core/utils/colors/app_colors.dart';
-import 'package:crazycar/features/controller/presentation/logic/cubit/car_controller_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -25,7 +24,7 @@ class CarControllers extends StatelessWidget {
                         InkWell(
 
                           onTap: (){
-                            CarControllerCubit.get(context) .carMovementDirection('l') ;
+                           
                           },
                           child: Image.asset(
                             AssetsData.leftImage,
@@ -68,7 +67,7 @@ class CarControllers extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: (){
-                             CarControllerCubit.get(context) .carMovementDirection('r') ;
+                             
                           },
                           child: Image.asset(
                             AssetsData.rightImage,

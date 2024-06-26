@@ -8,10 +8,10 @@ class CarControllerCubit extends Cubit<CarControllerStates> {
   CarControllerCubit(this.carControllerRepo) : super(CarControllerInitial());
 
 
-  Future<void> carMovementDirection(String direction) async {
+  Future<void> carMovementDirection({required int r , required int l } ) async {
     emit(ChangeCarMovementDirectionLoadingState());
     var response =
-        await carControllerRepo.carMovementDirection(direction: direction);
+        await carControllerRepo.carMovementDirection(r: r, l: l);
     response.fold((failure) {
       emit(ChangeCarMovementDirectionErrorState());
     }, (loginModel) {

@@ -6,13 +6,13 @@ import 'package:dartz/dartz.dart';
 class CarControllerRepo extends BaseCarControllerRepo{
   @override
   Future<Either<String , dynamic>> carMovementDirection(
-      {required String direction}) async {
+      {required int r , required int l }) async {
     try {
       var response = await DioHelper.postdata(
           endPoint: EndPoints.carMovement,
           data: {
-            'r' : direction == 'r' ?  1 : 0 , 
-            'l' : direction == 'l' ?  1 : 0 , 
+            'r' :  r,
+            'l' : l
           }
          );
        print(response.data);
