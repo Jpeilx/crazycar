@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:crazycar/core/utils/helper/spacing.dart';
 import 'package:crazycar/features/controller/presentation/logic/cubit/car_controller_cubit.dart';
 import 'package:crazycar/features/controller/presentation/views/widgets/video_timing.dart';
@@ -65,7 +66,9 @@ class _CarControllerAndLiveScreenState
             // ),
             verticalSpace(70),
             Joystick(
+              period: Duration(seconds: 1),
               base: JoystickBase(
+
                 decoration: JoystickBaseDecoration(
                   color: Colors.black,
                   drawOuterCircle: false,
@@ -74,33 +77,40 @@ class _CarControllerAndLiveScreenState
                   color: Colors.blue,
                 ),
               ),
+              
               listener: (details) {
-                double  l = 0 , r =0  ; 
-                if (details.x<0 && details.y <=0){
-                  l=((details.y*100).round()*(-1.0)) ;
-                  l=0.49*l+150 ;
-                  r=99 ;
-                  // r=((details.x*100).round()*(-1.0)) ;
-                  // r= ( -1 * 0.5)*r+99 ;
+                double l = 0, r = 0;
+                if (details.x < 0 && details.y <= 0) {
+                  l = ((details.y * 100).round() * (-1.0));
+                  l = 0.24 * l + 175;
+                  r = 99;
+                } else if (details.x < 0 && details.y > 0) {
+                  l = 0.24 * (details.y * 100).round() + 125;
+                  r = 49;
+                } else if (details.x > 0 && details.y <= 0) {
+                  l = 199;
+                  r = (-1 * 0.24) * (details.x * 100).round() + 99;
+                } else if (details.x > 0 && details.y > 0) {
+                  l = 149;
+                  r = -0.24* (details.x * 100).round() + 49;
                 }
-                else if (details.x<0 && details.y>0){
-                 
-                  l=0.49*(details.y*100).round()+100 ;
-                  r = 49 ; 
-                  //  r=((details.x*100).round()*(-1.0)) ;
-                  // r= -0.49*r+49 ;
+                else if (details.x==0 && details.y ==0 ){
+                  l=100 ;
+                  r=0 ;
+                   CarControllerCubit.get(context) .carMovementDirection(r:r.round() , l : l.round()) ;
+                    CarControllerCubit.get(context) .carMovementDirection(r:r.round() , l : l.round()) ;
+                     CarControllerCubit.get(context) .carMovementDirection(r:r.round() , l : l.round()) ;
+                     CarControllerCubit.get(context) .carMovementDirection(r:r.round() , l : l.round()) ;
+                     CarControllerCubit.get(context) .carMovementDirection(r:r.round() , l : l.round()) ;
                 }
-                else if (details.x>0 && details.y<=0){
-                  l=199 ;  
-                  r= ( -1 * 0.5)*(details.x*100).round() +99 ; 
-                }
-                else if (details.x>0 && details.y>0){
-                  l=149 ;
-                   r= -0.49*(details.x*100).round()+49 ;
-                }
-             CarControllerCubit.get(context) .carMovementDirection(r:r.round() , l : l.round()) ;
-            
                 
+                  print('l');
+                  print(l);
+                  print('r');
+                  print(r);
+                
+
+                 CarControllerCubit.get(context) .carMovementDirection(r:r.round() , l : l.round()) ;
               },
             )
             // CarControllers(),

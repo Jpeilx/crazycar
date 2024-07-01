@@ -1,15 +1,17 @@
+import 'package:crazycar/core/services/service_locator.dart';
 import 'package:crazycar/features/layout/presentation/views/app_layout.dart';
 import 'package:crazycar/features/login/presentation/views/login_screen.dart';
-import 'package:crazycar/features/users_tracking/presentation/logic/edit_upload_images_cubit/edit_upload_images_cubit.dart';
-import 'package:crazycar/features/users_tracking/presentation/views/add_user_tracking_images.dart';
-import 'package:crazycar/features/users_tracking/presentation/views/pager_images.dart';
+import 'package:crazycar/features/users_tracking/data/repository/users_tracking_repo.dart';
+import 'package:crazycar/features/users_tracking/presentation/logic/video_streaming_cubit/video_streaming_cubit.dart';
+import 'package:crazycar/features/users_tracking/presentation/views/add_user_tracking_images.dart';import 'package:crazycar/features/users_tracking/presentation/views/camera_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {
   static const String kAppLayoutView = '/appLayoutView';
-  static const String kPagerImagesView = '/pagerImagesView';
+
+  static const String kCameraScreen = '/cameraView';
   static const String kAddUserTrackingImagesScreen =
       '/addUserTrackingImagesView';
 
@@ -27,25 +29,18 @@ abstract class AppRouter {
           return const AppLayout();
         },
       ),
-      GoRoute(
+       GoRoute(
         path: kAddUserTrackingImagesScreen,
         builder: (BuildContext context, GoRouterState state) {
-          return BlocProvider(
-            create: (context) => EditUploadImagesCubit(),
-            child: const AddUserTrackingImagesScreen(),
-          );
+          return const AddUserTrackingImagesScreen();
         },
       ),
       GoRoute(
-        path: kPagerImagesView,
+        path: kCameraScreen,
         builder: (BuildContext context, GoRouterState state) {
-          Map<String, dynamic> data = state.extra as Map<String, dynamic>;
-          return BlocProvider<EditUploadImagesCubit>.value(
-            value:  data['cubit'] as  EditUploadImagesCubit, 
-            child: PagerImages(
-              initIndex: data['initIndex'],
-              procesEdit: data['procesEdit'],
-            ),
+          return BlocProvider(
+            create: (context) => VideoStreamingCubit(getIt.get<UsersTrackingRepo>()),
+            child: const CameraScreen(),
           );
         },
       ),

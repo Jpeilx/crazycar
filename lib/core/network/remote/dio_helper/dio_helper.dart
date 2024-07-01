@@ -35,18 +35,6 @@ class DioHelper {
     return await _dio.get(endPoint, queryParameters: query);
   }
 
-  static Future<Response<ResponseBody>> getdatastream({
-    required String endPoint,
-    Map<String, dynamic>? query,
-  }) async {
-    _dio.options.headers = {
-      'Content-Type': 'application/json',
-      'Accept-Language':'en-Us',
-    };
-    return await _dio.get<ResponseBody>(endPoint,
-        queryParameters: query,
-        options: Options(responseType: ResponseType.stream));
-  }
 
   static Future<Response> postdata({
     required String endPoint,
@@ -82,6 +70,35 @@ class DioHelper {
           }),
     );
   }
+static Future<Response> postVideoFrame({
+  required String endPoint,
+  required dynamic data,
+  bool isFormData = false,
+  Map<String, dynamic>? query,
+  String? bearer,
+}) async {
+  try {
+    _dio.options.headers = {
+      'Content-Type': 'multipart/form-data',
+      if (bearer != null) 'Authorization': 'Bearer $bearer',
+    };
+
+    return await _dio.post(
+      endPoint,
+      queryParameters: query,
+      data: FormData.fromMap({'file': data}),
+      options: Options(
+        followRedirects: false,
+        validateStatus: (status) {
+          return status != null && status < 500;
+        },
+      ),
+    );
+  } catch (e) {
+    print('Error posting video frame: $e');
+    rethrow;
+  }
+}
 
   static Future<Response> putdata({
     required String endPoint,

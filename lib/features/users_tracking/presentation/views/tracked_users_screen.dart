@@ -55,7 +55,7 @@ class TrackedUsersScreen extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
-          child: const Icon(
+          child:  Icon(
             Icons.add,
             color: AppColors.kWhiteColor,
           ),
