@@ -4,6 +4,7 @@ import 'package:crazycar/core/utils/styles/font_manager.dart';
 import 'package:crazycar/core/utils/styles/text_style_manger.dart';
 import 'package:crazycar/core/widgets/app_text_button.dart';
 import 'package:crazycar/features/car_leader/presentatin/logic/car_option_cubit/car_options_cubit.dart';
+import 'package:crazycar/features/controller/presentation/logic/cubit/car_controller_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -39,6 +40,7 @@ class QRView extends StatelessWidget {
                   fontFamily: FontConstants.poppinsFontfamily),
               onPressed: () {
                  CarOptionsCubit.get(context).changeCarControllerOption('g') ;
+                  CarControllerCubit.get(context) .carMovementDirection(r:1, l : 101) ;
               }),
           verticalSpace(20),
           AppTextButton(

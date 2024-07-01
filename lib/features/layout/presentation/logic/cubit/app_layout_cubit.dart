@@ -17,8 +17,15 @@ class AppLayoutCubit extends Cubit<AppLayoutStates> {
   static AppLayoutCubit get(context) => BlocProvider.of(context);
   int currentButtomNavIndex = 0;
   List<Widget> supermarketScreens = [
-    BlocProvider(
-      create: (context) => CarOptionsCubit(getIt.get<CarOptionsRepo>()),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => CarOptionsCubit(getIt.get<CarOptionsRepo>()),
+        ),
+        BlocProvider(
+          create: (context) => CarControllerCubit(getIt.get<CarControllerRepo>()),
+        ),
+      ],
       child: const QRView(),
     ),
     BlocProvider(
