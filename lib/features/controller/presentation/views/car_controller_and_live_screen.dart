@@ -95,8 +95,8 @@ class _CarControllerAndLiveScreenState
                   r = -0.24* (details.x * 100).round() + 49;
                 }
                 else if (details.x==0 && details.y ==0 ){
-                  l=100 ;
-                  r=0 ;
+                  l=101 ;
+                  r=1 ;
                    CarControllerCubit.get(context) .carMovementDirection(r:r.round() , l : l.round()) ;
                     CarControllerCubit.get(context) .carMovementDirection(r:r.round() , l : l.round()) ;
                      CarControllerCubit.get(context) .carMovementDirection(r:r.round() , l : l.round()) ;
