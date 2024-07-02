@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'dart:typed_data';
+
 
 import 'package:crazycar/core/network/remote/dio_helper/dio_helper.dart';
 import 'package:crazycar/core/network/remote/end_points.dart';
@@ -45,15 +45,13 @@ class UsersTrackingRepo extends BaseUsersTrackingRepo{
   }
 
   @override
-  Future<Either<String, dynamic>> sendVideoFrame({required Uint8List encodedFrame}) async {
+  Future<Either<String, dynamic>> sendVideoFrame({required File  encodedFrame}) async {
   try {
     var response = await DioHelper.postVideoFrame(
       endPoint: EndPoints.sendVideoStramFrame,
-      data: MultipartFile.fromBytes(
-        encodedFrame,
-        filename: 'frame.jpg', // Ensure a filename is provided
-      //  contentType:  MediaType('image', 'jpeg'), // Set content type
-      ),
+      data: FormData.fromMap({'file' : await  MultipartFile.fromFile(
+        encodedFrame.path 
+      ),}) 
     );
     print(response.data);
     return Right(response.data);

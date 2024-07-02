@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:crazycar/core/constant/app_assets.dart';
+import 'package:crazycar/core/constant/app_constance.dart';
 import 'package:crazycar/core/utils/helper/spacing.dart';
 import 'package:crazycar/features/controller/presentation/logic/cubit/car_controller_cubit.dart';
 import 'package:crazycar/features/controller/presentation/views/widgets/video_timing.dart';
@@ -26,7 +28,7 @@ class _CarControllerAndLiveScreenState
     super.initState();
 
     _videoPlayerController = VlcPlayerController.network(
-      'http://192.168.1.112:5000/video_feed',
+      '${AppConstance.apisBaseURL}/video_feed',
       hwAcc: HwAcc.auto,
       autoPlay: true,
       options: VlcPlayerOptions(),
@@ -51,24 +53,36 @@ class _CarControllerAndLiveScreenState
             verticalSpace(50),
             VideoTiming(),
             verticalSpace(20),
-            Center(
-              child: VlcPlayer(
-                controller: _videoPlayerController,
-                aspectRatio: 16 / 9,
-                placeholder: Center(child: CircularProgressIndicator()),
+            // Center(
+            //   child: VlcPlayer(
+            //     controller: _videoPlayerController,
+            //     aspectRatio: 16 / 9,
+            //     placeholder: Center(child: CircularProgressIndicator()),
+            //   ),
+            // ),
+            GestureDetector(
+              onPanUpdate: (details) {
+                // Swiping in right direction.
+                if (details.delta.dx > 0) {
+                  print('x') ;
+                  print(details.delta.dx) ;
+                }
+
+                // Swiping in left direction.
+                if (details.delta.dx < 0) {}
+              },
+              
+              child: Image.asset(
+                AssetsData.liveNotStartedImage,
+                width: double.infinity,
+                fit: BoxFit.fill,
+                height: 300.h,
               ),
             ),
-            // Image.asset(
-            //   AssetsData.liveNotStartedImage,
-            //   width: double.infinity,
-            //   fit: BoxFit.fill,
-            //   height: 300.h,
-            // ),
             verticalSpace(70),
             Joystick(
               period: Duration(seconds: 1),
               base: JoystickBase(
-
                 decoration: JoystickBaseDecoration(
                   color: Colors.black,
                   drawOuterCircle: false,
@@ -77,7 +91,6 @@ class _CarControllerAndLiveScreenState
                   color: Colors.blue,
                 ),
               ),
-              
               listener: (details) {
                 double l = 0, r = 0;
                 if (details.x < 0 && details.y <= 0) {
@@ -92,25 +105,29 @@ class _CarControllerAndLiveScreenState
                   r = (-1 * 0.24) * (details.x * 100).round() + 99;
                 } else if (details.x > 0 && details.y > 0) {
                   l = 149;
-                  r = -0.24* (details.x * 100).round() + 49;
+                  r = -0.24 * (details.x * 100).round() + 49;
+                } else if (details.x == 0 && details.y == 0) {
+                  l = 101;
+                  r = 1;
+                  CarControllerCubit.get(context)
+                      .carMovementDirection(r: r.round(), l: l.round());
+                  CarControllerCubit.get(context)
+                      .carMovementDirection(r: r.round(), l: l.round());
+                  CarControllerCubit.get(context)
+                      .carMovementDirection(r: r.round(), l: l.round());
+                  CarControllerCubit.get(context)
+                      .carMovementDirection(r: r.round(), l: l.round());
+                  CarControllerCubit.get(context)
+                      .carMovementDirection(r: r.round(), l: l.round());
                 }
-                else if (details.x==0 && details.y ==0 ){
-                  l=101 ;
-                  r=1 ;
-                   CarControllerCubit.get(context) .carMovementDirection(r:r.round() , l : l.round()) ;
-                    CarControllerCubit.get(context) .carMovementDirection(r:r.round() , l : l.round()) ;
-                     CarControllerCubit.get(context) .carMovementDirection(r:r.round() , l : l.round()) ;
-                     CarControllerCubit.get(context) .carMovementDirection(r:r.round() , l : l.round()) ;
-                     CarControllerCubit.get(context) .carMovementDirection(r:r.round() , l : l.round()) ;
-                }
-                
-                  print('l');
-                  print(l);
-                  print('r');
-                  print(r);
-                
 
-                 CarControllerCubit.get(context) .carMovementDirection(r:r.round() , l : l.round()) ;
+                print('l');
+                print(l);
+                print('r');
+                print(r);
+
+                CarControllerCubit.get(context)
+                    .carMovementDirection(r: r.round(), l: l.round());
               },
             )
             // CarControllers(),

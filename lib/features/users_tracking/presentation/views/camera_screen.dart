@@ -8,6 +8,7 @@ import 'package:crazycar/core/utils/styles/text_style_manger.dart';
 import 'package:crazycar/core/widgets/app_text_button.dart';
 import 'package:crazycar/features/users_tracking/presentation/logic/video_streaming_cubit/video_streaming_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({super.key});
@@ -19,11 +20,11 @@ class CameraScreen extends StatefulWidget {
 class _CameraScreenState extends State<CameraScreen> {
   CameraController? controller;
   bool isStreaming = false;
-  int count = 10 ;
-  File ? file ;
+  int count = 10;
+  File? file;
   @override
   void initState() {
-    VideoStreamingCubit.get(context).addnewUserToTrack() ;
+    VideoStreamingCubit.get(context).addnewUserToTrack();
     initializeCamera();
     super.initState();
   }
@@ -33,22 +34,32 @@ class _CameraScreenState extends State<CameraScreen> {
     final frontCamera = cameras.firstWhere(
       (camera) => camera.lensDirection == CameraLensDirection.front,
     );
-    controller = CameraController(frontCamera, ResolutionPreset.low );
+    controller = CameraController(frontCamera, ResolutionPreset.medium);
     await controller?.initialize();
     setState(() {});
   }
 
- void startStreaming() {
-  if (controller != null && controller!.value.isInitialized) {
-    controller?.startImageStream((CameraImage image) {
-      Uint8List list = image.planes.first.bytes;
-      VideoStreamingCubit.get(context).sendVideoStreamFrame(encodedFrame: list);
-    });
-    setState(() {
-      isStreaming = true;
-    });
+
+  Future<void> startStreaming() async {
+    if (controller != null && controller!.value.isInitialized) {
+      int counter = 100 ;
+      while(counter>0){
+ var tempFile  =     controller?.takePicture() ;
+      if (tempFile!= null ){
+            var file = await tempFile; 
+ VideoStreamingCubit.get(context)
+            .sendVideoStreamFrame(encodedFrame:  File(file.path)   );
+            counter-- ; 
+      }
+      }
+     
+    
+
+      setState(() {
+        isStreaming = true;
+      });
+    }
   }
-}
 
   void stopStreaming() {
     controller?.stopImageStream();
@@ -65,7 +76,6 @@ class _CameraScreenState extends State<CameraScreen> {
           ? Stack(
               children: [
                 CameraPreview(controller!),
-               file!= null ? Image.file(file ?? File('')) : SizedBox() ,
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: AppTextButton(
@@ -74,7 +84,7 @@ class _CameraScreenState extends State<CameraScreen> {
                           fontSize: FontSize.s14,
                           color: AppColors.kWhiteColor,
                           fontFamily: FontConstants.poppinsFontfamily),
-                      onPressed: (){
+                      onPressed: () {
                         isStreaming ? stopStreaming() : startStreaming();
                       }),
                 )

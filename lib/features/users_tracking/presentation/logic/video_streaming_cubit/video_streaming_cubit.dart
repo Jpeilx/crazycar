@@ -1,3 +1,4 @@
+
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -12,7 +13,7 @@ class VideoStreamingCubit extends Cubit<VideoStreamingStates> {
   VideoStreamingCubit(this.usersTrackingRepo) : super(VideoStreamingInitial());
 
   
-Future<void> sendVideoStreamFrame({required Uint8List encodedFrame}) async {
+Future<void> sendVideoStreamFrame({required File encodedFrame}) async {
   emit(SendVideoFrameLoadingState());
   var response = await usersTrackingRepo.sendVideoFrame(encodedFrame: encodedFrame);
   response.fold((failure) {

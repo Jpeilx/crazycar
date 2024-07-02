@@ -86,7 +86,7 @@ static Future<Response> postVideoFrame({
     return await _dio.post(
       endPoint,
       queryParameters: query,
-      data: FormData.fromMap({'file': data}),
+      data:  data,
       options: Options(
         followRedirects: false,
         validateStatus: (status) {
