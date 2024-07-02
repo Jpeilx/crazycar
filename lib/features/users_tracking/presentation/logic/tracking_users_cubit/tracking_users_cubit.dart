@@ -23,7 +23,7 @@ class TrackingUsersCubit extends Cubit<TrackingUsersStates> {
       emit(GetAvailableUsersToTrackSuccessState());
     });
   }
-  Future<void> setUserToTrack({required int id }) async {
+  Future<void> setUserToTrack({required String  id }) async {
     emit(SetUserToTrackLoadingState());
     var response =
         await usersTrackingRepo.specifyTrackingUser(id: id);
@@ -31,6 +31,16 @@ class TrackingUsersCubit extends Cubit<TrackingUsersStates> {
       emit(SetUserToTrackErrorState());
     }, (message) {
       emit(SetUserToTrackSuccessState());
+    });
+  }
+  Future<void> searchAboutUserToTrack({required String name  }) async {
+    emit(SearchAboutUrerToTrackLoadingState());
+    var response =
+        await usersTrackingRepo.searchAboutUserToTrack(name: name );
+    response.fold((failure) {
+      emit(SearchAboutUrerToTrackErrorState());
+    }, (message) {
+      emit(SearchAboutUrerToTrackSuccessState());
     });
   }
 }

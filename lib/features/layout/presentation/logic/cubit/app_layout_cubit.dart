@@ -35,7 +35,7 @@ class AppLayoutCubit extends Cubit<AppLayoutStates> {
     BlocProvider(
       create: (context) => TrackingUsersCubit(getIt.get<UsersTrackingRepo>())
         ..getAvailableUserToTrack(),
-      child: const TrackedUsersScreen(),
+      child:  TrackedUsersScreen(),
     )
   ];
   void changeButtonNavItem(int index) {

@@ -62,16 +62,16 @@ class _CarControllerAndLiveScreenState
             // ),
             GestureDetector(
               onPanUpdate: (details) {
-                // Swiping in right direction.
-                if (details.delta.dx > 0) {
-                  print('x') ;
-                  print(details.delta.dx) ;
-                }
+                if (details.delta.dx > 0)
+                  print("Dragging in +X direction");
+                else
+                  print("Dragging in -X direction");
 
-                // Swiping in left direction.
-                if (details.delta.dx < 0) {}
+                if (details.delta.dy > 0)
+                  print("Dragging in +Y direction");
+                else
+                  print("Dragging in -Y direction");
               },
-              
               child: Image.asset(
                 AssetsData.liveNotStartedImage,
                 width: double.infinity,

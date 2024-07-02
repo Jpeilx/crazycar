@@ -1,14 +1,12 @@
 import 'dart:io';
-import 'dart:typed_data';
-
 import 'package:camera/camera.dart';
 import 'package:crazycar/core/utils/colors/app_colors.dart';
 import 'package:crazycar/core/utils/styles/font_manager.dart';
 import 'package:crazycar/core/utils/styles/text_style_manger.dart';
-import 'package:crazycar/core/widgets/app_text_button.dart';
+import 'package:crazycar/core/shared/widgets/app_text_button.dart';
 import 'package:crazycar/features/users_tracking/presentation/logic/video_streaming_cubit/video_streaming_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
+
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({super.key});

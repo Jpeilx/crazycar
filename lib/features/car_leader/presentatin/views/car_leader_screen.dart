@@ -2,7 +2,7 @@ import 'package:crazycar/core/utils/colors/app_colors.dart';
 import 'package:crazycar/core/utils/helper/spacing.dart';
 import 'package:crazycar/core/utils/styles/font_manager.dart';
 import 'package:crazycar/core/utils/styles/text_style_manger.dart';
-import 'package:crazycar/core/widgets/app_text_button.dart';
+import 'package:crazycar/core/shared/widgets/app_text_button.dart';
 import 'package:crazycar/features/car_leader/presentatin/logic/car_option_cubit/car_options_cubit.dart';
 import 'package:crazycar/features/controller/presentation/logic/cubit/car_controller_cubit.dart';
 import 'package:flutter/material.dart';

@@ -9,3 +9,6 @@ final class GetAvailableUsersToTrackErrorState extends TrackingUsersStates {}
 final class SetUserToTrackLoadingState extends TrackingUsersStates {}
 final class SetUserToTrackSuccessState extends TrackingUsersStates {}
 final class SetUserToTrackErrorState extends TrackingUsersStates {}
+final class SearchAboutUrerToTrackLoadingState extends TrackingUsersStates {}
+final class SearchAboutUrerToTrackSuccessState extends TrackingUsersStates {}
+final class SearchAboutUrerToTrackErrorState extends TrackingUsersStates {}

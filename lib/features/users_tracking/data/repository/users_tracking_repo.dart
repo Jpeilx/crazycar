@@ -26,7 +26,7 @@ class UsersTrackingRepo extends BaseUsersTrackingRepo{
   
 
   @override
-  Future<Either<String, dynamic>> specifyTrackingUser({required int  id}) async {
+  Future<Either<String, dynamic>> specifyTrackingUser({required String   id}) async {
      try {
       var response = await DioHelper.postdata(
           endPoint: EndPoints.setTrackingUSer,
@@ -60,12 +60,31 @@ class UsersTrackingRepo extends BaseUsersTrackingRepo{
     return Left('Error');
   }
 }
+@override
     Future<Either<String, dynamic>> addNewUserToTrack() async {
     try {
       var response = await DioHelper.postdata(
           endPoint: EndPoints.setCarOption,
           data: {
             'opt':'n'
+          }
+         );
+       print(response.data);
+        return Right(response.data);
+     
+    } catch (error) {
+      print(error);
+      return Left('Error');
+    }
+  }
+  
+  @override
+  Future<Either<String, dynamic>> searchAboutUserToTrack({required String name}) async {
+    try {
+      var response = await DioHelper.postdata(
+          endPoint: EndPoints.searchAboutUserToTrack,
+          data: {
+            'name':name 
           }
          );
        print(response.data);

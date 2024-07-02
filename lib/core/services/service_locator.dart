@@ -1,3 +1,4 @@
+import 'package:crazycar/core/shared/repositories/notifications_repo/notifications_repo.dart';
 import 'package:crazycar/features/controller/data/repository/car_controller_repo.dart';
 import 'package:crazycar/features/car_leader/data/repository/car_options_repo.dart';
 import 'package:crazycar/features/users_tracking/data/repository/users_tracking_repo.dart';
@@ -9,6 +10,7 @@ void setUpServiceLocator() {
   getIt.registerLazySingleton<CarControllerRepo>(() => CarControllerRepo());
   getIt.registerLazySingleton<UsersTrackingRepo>(() => UsersTrackingRepo());
   getIt.registerLazySingleton<CarOptionsRepo>(() => CarOptionsRepo());
+  getIt.registerLazySingleton<NotificationsRepo>(() => NotificationsRepo());
  
  
 }

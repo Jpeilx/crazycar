@@ -1,10 +1,12 @@
 import 'package:crazycar/core/network/local/cache_helper.dart';
 import 'package:crazycar/core/network/remote/dio_helper/dio_helper.dart';
 import 'package:crazycar/core/services/service_locator.dart';
+import 'package:crazycar/core/shared/cubits/notifications_cubit/notifications_cubit.dart';
+import 'package:crazycar/core/shared/repositories/notifications_repo/notifications_repo.dart';
 import 'package:crazycar/core/utils/colors/app_colors.dart';
 import 'package:crazycar/core/utils/router/app_router.dart';
 import 'package:crazycar/core/utils/themes/app_theme.dart';
-import 'package:crazycar/core/widgets/bloc_observer.dart';
+import 'package:crazycar/core/shared/widgets/bloc_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,8 +15,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
-DioHelper.init();
- await CacheHelper.init();
+  DioHelper.init();
+  await CacheHelper.init();
   Bloc.observer = MyBlocObserver();
   setUpServiceLocator();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -22,7 +24,10 @@ DioHelper.init();
       statusBarIconBrightness: Brightness.dark,
       systemNavigationBarColor: AppColors.kWhiteColor,
       systemNavigationBarIconBrightness: Brightness.dark));
-  runApp(const MyApp());
+  runApp(BlocProvider(
+    create: (context) => NotificationsCubit(getIt.get<NotificationsRepo>()),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

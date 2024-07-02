@@ -1,7 +1,7 @@
 
 
 import 'package:crazycar/core/utils/colors/app_colors.dart';
-import 'package:crazycar/core/widgets/app_container_shape.dart';
+import 'package:crazycar/core/shared/widgets/app_container_shape.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,6 +1,6 @@
 import 'package:crazycar/core/constant/app_assets.dart';
 import 'package:crazycar/core/utils/colors/app_colors.dart';
-import 'package:crazycar/core/widgets/svg_asset_handle.dart';
+import 'package:crazycar/core/shared/widgets/svg_asset_handle.dart';
 import 'package:crazycar/features/layout/presentation/logic/cubit/app_layout_cubit.dart';
 import 'package:crazycar/features/layout/presentation/logic/cubit/app_layout_states.dart';
 import 'package:flutter/material.dart';
