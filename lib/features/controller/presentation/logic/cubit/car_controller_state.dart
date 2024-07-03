@@ -6,3 +6,6 @@ abstract class CarControllerStates{}
  class ChangeCarMovementDirectionLoadingState extends CarControllerStates {}
  class ChangeCarMovementDirectionSuccessState extends CarControllerStates {}
  class ChangeCarMovementDirectionErrorState extends CarControllerStates {}
+  class ChangePanTiltMovementDirectionLoadingState extends CarControllerStates {}
+ class ChangePanTiltMovementDirectionSuccessState extends CarControllerStates {}
+ class ChangePanTiltMovementDirectionErrorState extends CarControllerStates {}

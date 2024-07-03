@@ -6,5 +6,6 @@ class EndPoints {
   static String setCarOption = '/set_opt';
   static String getNotifications = '/notify';
   static String searchAboutUserToTrack = '/chosen_name';
+  static String panTiltMovement = '/pan_tilt';
  
 }

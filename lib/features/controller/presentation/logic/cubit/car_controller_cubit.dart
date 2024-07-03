@@ -9,9 +9,11 @@ class CarControllerCubit extends Cubit<CarControllerStates> {
 
 
   Future<void> carMovementDirection({required int r , required int l } ) async {
+    print(r);
+    print(l);
     emit(ChangeCarMovementDirectionLoadingState());
     var response =
-        await carControllerRepo.carMovementDirection(r: r, l: l);
+        await carControllerRepo.carMovementDirections(r: r, l: l);
     response.fold((failure) {
       emit(ChangeCarMovementDirectionErrorState());
     }, (loginModel) {
@@ -19,5 +21,16 @@ class CarControllerCubit extends Cubit<CarControllerStates> {
     });
   }
 
+  Future<void> changePanTiltMovementDirections({required int pan  , required int tilt } ) async {
+   
+    emit(ChangePanTiltMovementDirectionLoadingState());
+    var response =
+        await carControllerRepo.panTiltMovementDirections(pan: pan, tilt: tilt);
+    response.fold((failure) {
+      emit(ChangePanTiltMovementDirectionErrorState());
+    }, (loginModel) {
+      emit(ChangePanTiltMovementDirectionSuccessState());
+    });
+  }
   
 }
