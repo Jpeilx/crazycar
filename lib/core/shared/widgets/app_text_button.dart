@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppTextButton extends StatelessWidget {
   final double? borderRadius;
   final Color? backgroundColor;
+  final Color? borderColor;
   final double? horizontalPadding;
   final double? verticalPadding;
   final double? buttonWidth;
@@ -21,6 +22,7 @@ class AppTextButton extends StatelessWidget {
     this.verticalPadding,
     this.buttonHeight,
     this.buttonWidth,
+    this.borderColor,
     required this.buttonText,
     required this.textStyle,
     required this.onPressed,
@@ -30,21 +32,26 @@ class AppTextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: ButtonStyle(
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
+            side: BorderSide(
+              color: borderColor ?? backgroundColor ??AppColors.kPrimaryColor, // your color here
+              width: 1,
+            ),
             borderRadius: BorderRadius.circular(borderRadius ?? 16.0),
+            
           ),
         ),
-        backgroundColor: MaterialStatePropertyAll(
+        backgroundColor: WidgetStatePropertyAll(
           backgroundColor ?? AppColors.kPrimaryColor,
         ),
-        padding: MaterialStateProperty.all<EdgeInsets>(
+        padding: WidgetStateProperty.all<EdgeInsets>(
           EdgeInsets.symmetric(
             horizontal: horizontalPadding?.w ?? 12.w,
             vertical: verticalPadding?.h ?? 14.h,
           ),
         ),
-        fixedSize: MaterialStateProperty.all(
+        fixedSize: WidgetStateProperty.all(
           Size(buttonWidth?.w ?? double.maxFinite, buttonHeight ?? 50.h),
         ),
       ),

@@ -8,18 +8,17 @@ part 'notifications_state.dart';
 class NotificationsCubit extends Cubit<NotificationsStates> {
   BaseNotificationsRepo notificationsRepo ; 
   static  NotificationsCubit get(context) => BlocProvider.of(context);
-
-      String ? message  ; 
   NotificationsCubit(this.notificationsRepo) : super(IntialNotificationsState());
+      
    Future<void> getNotifications() async {
     emit(GetNotificationsLoadingState());
     var response =
-        await notificationsRepo.getNortifications();
+        await notificationsRepo.getNotifications();
     response.fold((failure) {
       emit(GetNotificationsErrorState());
     }, (message) {
-      this.message  =message  ;
-      emit(GetNotificationsSuccessState());
+      
+      emit(GetNotificationsSuccessState(message));
     });
   }
 }

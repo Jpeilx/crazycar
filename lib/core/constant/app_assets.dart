@@ -11,9 +11,12 @@ class AssetsData {
   static const String videoGoLeft = 'assets/images/video_go_left.svg' ;
   static const String videoRransitionLeft = 'assets/images/video_transation_left.svg' ;
   static const String videoPlay = 'assets/images/playvideo.svg' ;
+   static const String noImage = 'assets/images/No_image_available.png';
+   static const String deleteIcon = 'assets/icons/ic_delete.svg' ;
   //icons
   static const String pauseIcon = 'assets/icons/pause.svg';
-  static const String scanIcon = 'assets/icons/scanner.svg';
+  static const String optionIcon = 'assets/icons/options.svg';
   static const String videoIcon = 'assets/icons/video.svg';
   static const String trackIcon = 'assets/icons/tracking.svg';
+  static const String liveVideoIcon = 'assets/icons/live_video.svg';
   }
