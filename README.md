@@ -16,6 +16,8 @@ This mobile app is part of my graduation project, showcasing my skills in Flutte
 - Responsive UI
 - Dependency injection
 - Singleton pattern
+- <img width="1478" height="2705" alt="image" src="https://github.com/user-attachments/assets/c1a8e1ff-e536-48e1-bcce-141c3bb9d941" />
+
 
 ## Features
 
